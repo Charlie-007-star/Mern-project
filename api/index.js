@@ -7,11 +7,11 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-app.use('/posts', postRoutes);  
-
 app.use(bodyParser.json({limit: '30mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
-app.use(cors());   
+app.use(cors()); 
+
+app.use('/posts', postRoutes); 
 
 /* -------------------------- port and mongoose url ------------------------- */
 const CONNECTION_URL = "mongodb+srv://sujin:1234@cluster0.2p1m8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
