@@ -51,7 +51,6 @@ export const deletePost = async(req,res)=>{
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
     
         await PostMessage.findByIdAndDelete(id);
-        console.log("delete aayo?");
     
         res.json({ message: `Post with id: ${id} deleted` });
 }
@@ -64,9 +63,7 @@ export const likePost = async(req,res)=>{
 
     const post = await PostMessage.findById(id);  
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new:true  })
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new:true  }) 
 
-    console.log("update aayo backend");
-
-    res.json(updatedPost)
-}
+    res.json(updatedPost);                        
+} 
